@@ -7,4 +7,13 @@ const userSchema = new mongoose.Schema ({
 });
 const User = mongoose.model('User',userSchema);
 
-async function getUsers(){};
+export async function insertUsers(name:string, email:string,password:string){
+  const user = new User({
+    name,
+    email,
+    password,
+  });
+
+}
+
+
