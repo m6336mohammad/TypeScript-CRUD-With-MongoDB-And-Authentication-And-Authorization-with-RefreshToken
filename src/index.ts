@@ -1,5 +1,6 @@
 import 'dotenv/config'
 import express from "express";
+import homeRouter from './routes/home-route';
 import mongoose from "mongoose";
 const port  = process.env.PORT || 3000;
 const app = express()
@@ -10,6 +11,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/usearInfo')
 .catch((e: string)=>console.log("could not connect to database"+e))
 
 app.use(express.json())
+app.use('/',homeRouter)
 
 
 
