@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import express from "express";
 import homeRouter from './routes/home-route';
+import userRouter from './routes/user-router';
 import mongoose from "mongoose";
 const port  = process.env.PORT || 3000;
 const app = express()
@@ -12,6 +13,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/usearInfo')
 
 app.use(express.json())
 app.use('/',homeRouter)
+app.use('/users',userRouter)
 
 
 
