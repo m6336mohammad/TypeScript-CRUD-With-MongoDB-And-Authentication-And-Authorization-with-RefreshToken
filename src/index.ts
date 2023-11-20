@@ -1,16 +1,17 @@
 import "dotenv/config";
 import express from "express";
-import homeRouter from "./routes/home-route";
-import userRouter from "./routes/user-router";
 import mongoose from "mongoose";
+
+//variable
 const port = process.env.PORT || 3000;
 const app = express();
+
+//middlerwers
 app.use(express.json());
 
-app.use(express.json());
-app.use("/", homeRouter);
-app.use("/users", userRouter);
+//controller
 
+//database connection
 mongoose
   .connect("mongodb://127.0.0.1:27017/usearInfo")
   .then(() => {
