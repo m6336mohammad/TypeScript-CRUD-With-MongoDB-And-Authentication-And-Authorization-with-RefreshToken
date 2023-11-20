@@ -1,6 +1,6 @@
 import { IsDefined, IsPhoneNumber, MinLength } from "class-validator";
 
-export default class RegisterDto {
+export default class RegisterDTO {
   @IsPhoneNumber()
   @IsDefined()
   mobile: string;
