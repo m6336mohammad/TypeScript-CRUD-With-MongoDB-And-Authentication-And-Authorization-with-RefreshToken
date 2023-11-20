@@ -1,7 +1,7 @@
 import LoginDTO from "./loginDTO";
-import RegisterDto from "./registerDTO";
+import RegisterDTO from "./registerDTO";
 
 export {
   LoginDTO,
-  RegisterDto
+  RegisterDTO
 }
