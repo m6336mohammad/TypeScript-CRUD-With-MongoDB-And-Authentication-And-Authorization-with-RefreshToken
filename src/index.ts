@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
-
+import userController from "./users/userController";
 //variable
 const port = process.env.PORT || 3000;
 const app = express();
@@ -10,6 +10,7 @@ const app = express();
 app.use(express.json());
 
 //controller
+app.use('/users',userController)
 
 //database connection
 mongoose
