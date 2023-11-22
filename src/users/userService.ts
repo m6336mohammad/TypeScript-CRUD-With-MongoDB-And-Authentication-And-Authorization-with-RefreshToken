@@ -26,3 +26,16 @@ export const getUserByID = async (id: string) => {
       });
   });
 };
+//delete User By Id
+export const deleteUserById = async (id: string) => {
+  return new Promise((resolve, rejects) => {
+    UserModel.findByIdAndDelete(id)
+      .then((user) => {
+        resolve(user);
+      })
+      .catch((err) => {
+        rejects(err);
+      });
+  });
+};
+
