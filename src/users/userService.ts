@@ -1,5 +1,5 @@
 import UserModel from "../model/userModel";
-
+import UserDTO from "./user_dto/userDTO";
 //get AllUsers
 export const getAllUsers = () => {
   return new Promise((resolve, rejects) => {
