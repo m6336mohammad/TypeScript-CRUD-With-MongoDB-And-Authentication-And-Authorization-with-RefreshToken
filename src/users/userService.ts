@@ -38,4 +38,16 @@ export const deleteUserById = async (id: string) => {
       });
   });
 };
-
+//update user by Id
+export const updateUserById = (userId: string, body: UserDTO) => {
+  return new Promise((resolve, rejects) =>
+    UserModel.findByIdAndUpdate(userId, body)
+      .then((user) => {
+        console.log(user);
+        resolve(user);
+      })
+      .catch((err) => {
+        rejects(err);
+      })
+  );
+};
