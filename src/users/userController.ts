@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { authMiddleware, validateMiddlerwers } from "./../middleware";
-import { getAllUsers, getUserByID } from "./userService";
+import { deleteUserById, getAllUsers, getUserByID } from "./userService";
 
 const router = Router();
 
@@ -21,6 +21,16 @@ router.get("/id", authMiddleware, async (req: Request, res: Response) => {
     res.status(200).json({data: user, message:"ok"});
   } catch (err: any) {
     res.status(500).json({data:null, message: err.message });
+  }
+});
+
+router.delete("/:id", async (req: Request, res: Response) => {
+  try {
+    const userId = req.params.id;
+    const user = await deleteUserById(userId);
+    return res.status(200).json({ data: user, message: "ok" });
+  } catch (err: any) {
+    return res.status(500).json({ data: null, message: err.message });
   }
 });
 export default router
