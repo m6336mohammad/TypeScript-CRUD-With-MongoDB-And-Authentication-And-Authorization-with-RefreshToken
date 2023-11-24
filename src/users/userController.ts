@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import { authMiddleware, validateMiddlerwers } from "./../middleware";
-import { deleteUserById, getAllUsers, getUserByID } from "./userService";
+import { deleteUserById, getAllUsers, getUserByID, updateUserById } from "./userService";
+import { update } from "lodash";
 
 const router = Router();
 
@@ -33,4 +34,16 @@ router.delete("/:id", async (req: Request, res: Response) => {
     return res.status(500).json({ data: null, message: err.message });
   }
 });
+
+router .put("/:id", async(req:Request , res:Response)=>{
+  try {
+    const body = req.body;
+    const userId = req.params.id;
+    const user = await updateUserById(userId, body);
+    res.status(200).json({dtat: user, message:"ok"});
+    
+  }catch (err: any){
+    res.status(500).json({ data: null, message:err.message});
+  }
+})
 export default router
