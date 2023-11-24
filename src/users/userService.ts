@@ -51,3 +51,16 @@ export const updateUserById = (userId: string, body: UserDTO) => {
       })
   );
 };
+//post creatNewUser
+export const creatNewUser = (user: UserDTO) => {
+  return new Promise((resolve, rejects) =>
+    UserModel.create(user)
+      .then((user) => {
+        console.log(user);
+        resolve(user);
+      })
+      .catch((err) => {
+        rejects(err);
+      })
+  );
+};
