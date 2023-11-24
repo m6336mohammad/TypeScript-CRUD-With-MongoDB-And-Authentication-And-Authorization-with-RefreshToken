@@ -11,6 +11,7 @@ app.use(express.json());
 
 //controller
 app.use('/users',userController)
+// app.use('/auth',authController)
 
 //database connection
 mongoose

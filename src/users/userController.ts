@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 import { authMiddleware, validateMiddlerwers } from "./../middleware";
 import { deleteUserById, getAllUsers, getUserByID, updateUserById } from "./userService";
-import { update } from "lodash";
+// import { update } from "lodash";
 
 const router = Router();
 
