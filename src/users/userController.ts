@@ -35,7 +35,7 @@ router.delete("/:id", async (req: Request, res: Response) => {
   }
 });
 
-router .put("/:id", async(req:Request , res:Response)=>{
+router.put("/:id", async(req:Request , res:Response)=>{
   try {
     const body = req.body;
     const userId = req.params.id;
