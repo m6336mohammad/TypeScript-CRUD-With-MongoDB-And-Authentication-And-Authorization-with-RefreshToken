@@ -40,10 +40,10 @@ router .put("/:id", async(req:Request , res:Response)=>{
     const body = req.body;
     const userId = req.params.id;
     const user = await updateUserById(userId, body);
-    res.status(200).json({dtat: user, message:"ok"});
+    return res.status(200).json({dtat: user, message:"ok"});
     
   }catch (err: any){
-    res.status(500).json({ data: null, message:err.message});
+    return res.status(500).json({ data: null, message:err.message});
   }
 })
 export default router
