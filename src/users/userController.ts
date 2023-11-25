@@ -15,7 +15,7 @@ router.get("/", authMiddleware, async (req: Request, res: Response) => {
 
 
 //get by id
-router.get("/id", authMiddleware, async (req: Request, res: Response) => {
+router.get("/:id", authMiddleware, async (req: Request, res: Response) => {
   try {
     const userId = req.params.id;
     const user = await getUserByID(userId);
