@@ -1,6 +1,8 @@
 import { Router, Request, Response } from "express";
 import { authMiddleware, validateMiddlerwers } from "./../middleware";
-import { deleteUserById, getAllUsers, getUserByID, updateUserById } from "./userService";
+import { creatNewUser, deleteUserById, getAllUsers, getUserByID, updateUserById } from "./userService";
+import UserDTO from "./user_dto/userDTO";
+import CreateUserDTO from "./user_dto/userCreateDTO";
 // import { update } from "lodash";
 
 const router = Router();
