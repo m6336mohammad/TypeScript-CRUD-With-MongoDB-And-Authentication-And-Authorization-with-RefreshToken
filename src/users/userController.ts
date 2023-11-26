@@ -5,7 +5,7 @@ import { deleteUserById, getAllUsers, getUserByID, updateUserById } from "./user
 
 const router = Router();
 
-router.get("/", authMiddleware, async (req: Request, res: Response) => {
+router.get("/",  async (req: Request, res: Response) => {
   try {
     res.send(getAllUsers());
   } catch (err: any) {
@@ -25,7 +25,7 @@ router.get("/:id", authMiddleware, async (req: Request, res: Response) => {
   }
 });
 
-router.delete("/:id", async (req: Request, res: Response) => {
+router.delete("/:id",authMiddleware ,async (req: Request, res: Response) => {
   try {
     const userId = req.params.id;
     const user = await deleteUserById(userId);
@@ -35,7 +35,7 @@ router.delete("/:id", async (req: Request, res: Response) => {
   }
 });
 
-router.put("/:id", async(req:Request , res:Response)=>{
+router.put("/:id",authMiddleware, async(req:Request , res:Response)=>{
   try {
     const body = req.body;
     const userId = req.params.id;
