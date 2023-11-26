@@ -35,6 +35,21 @@ router.delete("/:id",authMiddleware ,async (req: Request, res: Response) => {
   }
 });
 
+router.post(
+  "/",
+  validateMiddlerwers(CreateUserDTO),
+  async (req: Request, res: Response) => {
+    try {
+      const boy: UserDTO = req.body;
+      const newUser = await creatNewUser(boy);
+      return res.status(200).json({ data: newUser, message: "ok" });
+    } catch (err: any) {
+      return res.status(500).json({ data: null, message: err.message });
+    }
+  }
+);
+
+
 router.put("/:id",authMiddleware, async(req:Request , res:Response)=>{
   try {
     const body = req.body;
