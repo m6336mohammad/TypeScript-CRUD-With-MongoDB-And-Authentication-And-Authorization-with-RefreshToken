@@ -8,7 +8,7 @@ import ServerError from "../errors/serverError";
 export const register = async (data: RegisterDTO) => {
     const user = await UserModel.findOne({ mobile: data.mobile });
     if (user) {
-     
+        throw new ServerError(409,"The mobile number is duplicated");
     } else {
       const hashpassword = await bcrypt.hash(data.password, 10);
       const newUser = await UserModel.create({ ...data, password: hashpassword });
