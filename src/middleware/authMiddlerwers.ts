@@ -9,7 +9,10 @@ const authMiddleware = (
   if (!token){
     return
     res.status(401).json({ message: "plese login"});
-  }};
+  }
+  token = token.split(" ")[1];
+  
+};
 
 
 
