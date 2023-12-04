@@ -11,7 +11,8 @@
     "lodash": "^4.17.21",
     "mongoose": "^8.0.0",
     "morgan": "^1.10.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "winston": "^3.11.0"
   },
   "name": "typescript-crud-with-mongodb-and-authentication-and-authorization",
   "description": "TypeScript-CRUD-With-MongoDB-And-Authentication-And-Authorization",
