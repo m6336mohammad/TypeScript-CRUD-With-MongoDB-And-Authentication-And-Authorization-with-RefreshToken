@@ -38,7 +38,7 @@ router.delete("/:id",authMiddleware ,async (req: Request, res: Response) => {
 });
 
 router.post(
-  "/",
+  "/",authMiddleware,
   validateMiddlerwers(CreateUserDTO),
   async (req: Request, res: Response) => {
     try {
