@@ -3,7 +3,7 @@ import { IsDefined, IsEmail, IsOptional, IsPhoneNumber, MinLength} from "class-v
 class CreateComponentDTO {
   
   @IsDefined()
-  title:string
+  title:string;
 
   @IsDefined()
   description: string;
@@ -18,8 +18,9 @@ class CreateComponentDTO {
   publisher: string;
 
   @IsOptional()
-  user:string
+  user:string;
   
   @IsOptional()
-  broker:string
+  broker:string;
 }
+export default CreateComponentDTO;
