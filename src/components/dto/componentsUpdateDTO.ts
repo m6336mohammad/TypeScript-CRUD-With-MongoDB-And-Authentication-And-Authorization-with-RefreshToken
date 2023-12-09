@@ -12,5 +12,14 @@ class UpdateComponentDTO {
     
     @IsDefined()
     subscriber: string;
-  
+
+    @IsDefined()
+    publisher: string;
+
+    @IsOptional()
+    user:string
+
+    @IsOptional()
+    broker:string
+
 }
