@@ -23,3 +23,4 @@ class UpdateComponentDTO {
     broker:string
 
 }
+export default UpdateComponentDTO
