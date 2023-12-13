@@ -26,3 +26,4 @@ class GetAllComponentDTO{
     page_size:number
   
 }
+export default GetAllComponentDTO
