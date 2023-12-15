@@ -25,3 +25,8 @@ export const getOneComponents = async (id: string) => {
   }
   return resalt
 };
+
+export const createNewComponents = async (data:CreateProductsDTO) => {
+    const result = await ComponentModel.create(data)
+    return result
+};
