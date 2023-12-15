@@ -17,3 +17,11 @@ export const getAllComponents = async (filtter:GetAllComponentDTO) => {
     const resalt = await ComponentModel.find(query,{},{skip:page_size*(page-1),limit:page_size})
     return resalt;
 };
+
+export const getOneComponents = async (id: string) => {
+  const resalt = await ComponentModel.findById(id);
+  if(!resalt){
+    throw new ServerError(404,"Not fond device")
+  }
+  return resalt
+};
