@@ -38,3 +38,13 @@ export const updateComponents = async (id: string, data:UpdateComponentDTO) => {
   const updateComp = await ComponentModel.findOneAndUpdate({"_id":id},{$set:data})
   return updateComp
 };
+
+export const deleteComponents = async (id: string, user:string) => {
+    const component = await ComponentModel.findOne({"_id":id,user})
+    console.log(component)
+    if(!component){
+        throw new ServerError(404,"Not fond device")
+    }
+    const deleteComp = await ComponentModel.deleteOne({"_id":id})
+    return deleteComp
+};
