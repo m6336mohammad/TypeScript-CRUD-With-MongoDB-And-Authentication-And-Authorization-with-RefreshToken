@@ -25,3 +25,16 @@ export const getOneComponents = async (id: string) => {
   }
   return resalt
 };
+
+export const createNewComponents = async (data:CreateProductsDTO) => {
+    const result = await ComponentModel.create(data)
+    return result
+};
+export const updateComponents = async (id: string, data:UpdateComponentDTO) => {
+  const component = await ComponentModel.findOne({"_id":id, user:data.user})
+  if(!component){
+    throw new ServerError(404,"Not fond devices")
+  }
+  const updateComp = await ComponentModel.findOneAndUpdate({"_id":id},{$set:data})
+  return updateComp
+};
