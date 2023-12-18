@@ -6,5 +6,5 @@ import { getOneComponents } from "./compService";
 
 export{
     getAllComponents,
-    getOneComponents
+    getOneComponents,
 }
