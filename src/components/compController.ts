@@ -19,3 +19,13 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
       next(err)
     }
   });
+
+router.get("/:id", async(req: Request, res: Response, next: NextFunction) => {
+    try{
+        const id : string = req.params.id
+        const result = await getOneComponents(id)
+        res.status(200).json(result)
+    }catch(err){
+        next(err)
+    }
+});
