@@ -29,3 +29,16 @@ router.get("/:id", async(req: Request, res: Response, next: NextFunction) => {
         next(err)
     }
 });
+
+//required authMiddleware 
+router.post("/",validateMiddlerwers(CreateComponentDTO), authMiddleware, async(req: RequestWithUser, res: Response, next: NextFunction) => {
+  try{
+    
+    const body: CreateComponentDTO= req.body
+    const result = await createNewComponents({...body , user : req.user})
+    res.status(200).json(result)
+  }catch(err){
+    next(err)
+  }
+
+});
