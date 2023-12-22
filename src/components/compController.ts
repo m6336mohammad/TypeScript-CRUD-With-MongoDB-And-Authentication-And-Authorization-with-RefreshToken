@@ -42,3 +42,12 @@ router.post("/",validateMiddlerwers(CreateComponentDTO), authMiddleware, async(r
   }
 
 });
+
+router.put("/:id",authMiddleware,async (req:RequestWithUser,res:Response,next:NextFunction)=>{
+    try{
+        const body: UpdateComponentDTO = req.body
+        const id:string = req.params.id
+        const result = await updateComponents(id,{...body,user : req.user})
+        res.status(200).json(result)}
+    catch(err) { next(err) }
+});
