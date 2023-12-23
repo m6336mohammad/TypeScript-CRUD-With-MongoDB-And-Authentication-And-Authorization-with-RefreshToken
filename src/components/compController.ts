@@ -51,3 +51,15 @@ router.put("/:id",authMiddleware,async (req:RequestWithUser,res:Response,next:Ne
         res.status(200).json(result)}
     catch(err) { next(err) }
 });
+
+//user requre to authMiddleware
+router.delete("/:id", authMiddleware, async(req: RequestWithUser, res: Response, next: NextFunction) => {
+  try{
+    const id: string = req.params.id
+    const result = await deleteComponents(id,req.user)
+    res.status(200).json(result)
+  }catch(err){
+    next(err)
+  }
+
+});
