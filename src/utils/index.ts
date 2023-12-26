@@ -1,5 +1,6 @@
-// import jwt from "jsonwebtoken";
-// const SECRET = "secret-key-is-protect";
+import jwt from "jsonwebtoken";
+const SECRET = "secret-key-is-protect";
+const REFRESH_SECRET = "refresh-secret-key-is-secure";
 
 // export const encodeToken = (paylod: any) => {
 //   const token = jwt.sign(paylod, SECRET, { expiresIn: "30d" });
@@ -9,4 +10,6 @@
 //   const decode = jwt.verify(token, SECRET);
 //   return decode;
 // };
+
+
 
