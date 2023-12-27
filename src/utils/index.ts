@@ -7,11 +7,7 @@
         //   return decode;
         // };
         
-        
- 
-        
 
-        
 import jwt from "jsonwebtoken";
 const SECRET = "secret-key-is-protect";
 const REFRESH_SECRET = "refresh-secret-key-is-secure";
@@ -25,3 +21,7 @@ export const encodeTokens = (payload: any) => {
   
     return { accessToken, refreshToken };
   };
+export const decodeAccessToken = (accessToken: string) => {
+    const decoded = jwt.verify(accessToken, SECRET);
+    return decoded;
+};
