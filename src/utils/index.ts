@@ -25,3 +25,9 @@ export const decodeAccessToken = (accessToken: string) => {
     const decoded = jwt.verify(accessToken, SECRET);
     return decoded;
 };
+export const decodeRefreshToken = (refreshToken: string) => {
+    const decoded = jwt.verify(refreshToken, REFRESH_SECRET);
+    console.log(decoded)
+    return decoded;
+  };
+  
