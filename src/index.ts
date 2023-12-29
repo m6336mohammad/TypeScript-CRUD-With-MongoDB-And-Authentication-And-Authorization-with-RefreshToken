@@ -10,6 +10,7 @@ const app = express();
 
 //middlerwers
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 //controller
 app.use('/users',userController)
