@@ -1,6 +1,8 @@
 import express,{Request,Response} from "express";
 import jwt from 'jsonwebtoken'
 import {decodeRefreshToken} from "./index";
+
+
 const SECRET = "secret-key-is-protect";
 
 
@@ -22,3 +24,4 @@ refreshRouter.post("/", (req:Request, res:Response) => {
         res.status(401).json({ message: "Refresh Token نامعتبر است." });
     }
 });
+export default refreshRouter;
