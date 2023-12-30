@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import userController from "./users/userController";
 import authController from "./auth/authController";
 import erroHandellerMiddleware from "./middleware/ErrorHandelingMid";
+import cors from 'cors'
 //variable
 const port = process.env.PORT || 3000;
 const app = express();
