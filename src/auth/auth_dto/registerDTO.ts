@@ -1,14 +1,23 @@
-import { IsDefined, IsPhoneNumber, MinLength } from "class-validator";
+import { IsDefined, IsEmail, MinLength, ValidationArguments, ValidationOptions, registerDecorator} from "class-validator";
 
 export default class RegisterDTO {
-  @IsPhoneNumber()
+  @IsEmail()
   @IsDefined()
-  mobile: string;
+  email:string
 
   @IsDefined()
   name: string;
 
   @IsDefined()
   @MinLength(8)
-  password: string;
+  password:string;
+
+  @IsDefined()
+  @MinLength(8)
+  // @IsEqualTo('password', {
+  //   message: 'Password confirmation does not match with password',
+  // })
+  confirmPassword:string;
+
+
 }
