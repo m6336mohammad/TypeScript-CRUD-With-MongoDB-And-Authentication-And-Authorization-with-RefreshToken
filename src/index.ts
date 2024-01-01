@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 //controller
+app.use('/Components',CompController)
 app.use('/users',userController)
 app.use('/auth',authController)
 
