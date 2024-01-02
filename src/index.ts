@@ -20,7 +20,6 @@ app.use('/Components',CompController)
 app.use('/users',userController)
 app.use('/auth',authController)
 
-
 //erroHandellerMiddleware
 app.use(erroHandellerMiddleware)
 
