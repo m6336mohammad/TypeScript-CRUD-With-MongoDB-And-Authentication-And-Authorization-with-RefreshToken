@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { encodeTokens , decodeAccessToken,decodeRefreshToken } from "../utils/index";
 import _ from "lodash"
 import ServerError from "../errors/serverError";
+import ForgotPasswordDTO from "./auth_dto/forgotPasswordsDTO";
 
 //register service
 export const register = async (data: RegisterDTO) => {
@@ -38,4 +39,16 @@ export const login = async (data: LoginDTO) => {
       return { token: token };
     
   };
+  
+  //forget password servize
+export const forgetPassword = async(data:ForgotPasswordDTO)=>{
+
+  //find user by email number
+    const user = await UserModel.findOne({ email: data.email });
+    if (!user) {
+      throw new ServerError(404,"کاربر مورد نظر یافت نشد ");
+    }
+    return data.email
+    
+  }
   
