@@ -1,6 +1,6 @@
 import { IsDefined, IsPhoneNumber} from "class-validator";
 
-export default class LoginDTO {
+export default class ForgotPasswordDTO {
     @IsPhoneNumber()
     @IsDefined()
     email: string;
