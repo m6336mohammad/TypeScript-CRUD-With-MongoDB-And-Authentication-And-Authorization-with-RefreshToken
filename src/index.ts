@@ -7,7 +7,7 @@ import erroHandellerMiddleware from "./middleware/ErrorHandelingMid";
 import CompController from "./components/compController";
 import cors from 'cors'
 //variable
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 const app = express();
 
 //middlerwers
