@@ -17,4 +17,9 @@ export const codeGeneratorForEmail = async (data:ForgotPasswordDTO) => {
         throw new Error('User not found');
     }
 
+    user.resetCode = code;
+    user.resetTokenExpiration = Date.now() + 1 * 60 * 1000; // 1 minutes
+    await user.save();
+    return code;
+
 };
