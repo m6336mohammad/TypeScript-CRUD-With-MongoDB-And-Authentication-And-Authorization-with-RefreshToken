@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { decodeToken } from "../utils";
+import { encodeTokens } from "../utils";
 import { RequestWithUser } from "../types/requestWithUser";
 const authMiddleware = (req: RequestWithUser, res: Response, next: NextFunction) => {
   let token = req.headers.authorization;
@@ -8,7 +8,7 @@ const authMiddleware = (req: RequestWithUser, res: Response, next: NextFunction)
   }
   token = token.split(" ")[1];
   try {
-    const data: any = decodeToken(token);
+    const data: any = encodeTokens(token);
     req.user = data.id;
     next();
   } catch (err) {
