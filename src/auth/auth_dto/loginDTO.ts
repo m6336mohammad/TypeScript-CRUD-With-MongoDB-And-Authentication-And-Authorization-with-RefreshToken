@@ -1,7 +1,7 @@
-import { IsDefined, IsPhoneNumber, MinLength} from "class-validator";
+import { IsDefined, IsEmail, IsPhoneNumber, MinLength} from "class-validator";
 
 export default class LoginDTO {
-  @IsPhoneNumber()
+  @IsEmail()
   @IsDefined()
   email: string;
 
