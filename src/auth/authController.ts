@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
-import {login, register} from "./authService";
+import {forgotPasswordRequest, login, register} from "./authService";
 import { LoginDTO,RegisterDTO } from "./auth_dto";
 import  validateMiddlerwers  from "../middleware/validationMiddlerwers";
 import ForgotPasswordDTO from "./auth_dto/forgotPasswordsDTO";
@@ -32,6 +32,7 @@ router.post("/login", validateMiddlerwers(LoginDTO),async (req: Request, res: Re
 router.post("/forgotPassword",validateMiddlerwers(ForgotPasswordDTO),async (req: Request, res: Response,next:NextFunction )=>{
     try{
         const user = req.body
+        await forgotPasswordRequest(user);
 
 
     }catch(err: any){
