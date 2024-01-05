@@ -5,8 +5,8 @@ import  validateMiddlerwers  from "../middleware/validationMiddlerwers";
 import ForgotPasswordDTO from "./auth_dto/forgotPasswordsDTO";
 
 const router = Router()
-router.post("/register",validateMiddlerwers(RegisterDTO),
-  async (req: Request, res: Response, next: NextFunction) => {
+
+router.post("/register",validateMiddlerwers(RegisterDTO),async (req: Request, res: Response, next: NextFunction) => {
     try {
       const body: RegisterDTO = req.body;
       const newUser = await register(body);
@@ -16,6 +16,7 @@ router.post("/register",validateMiddlerwers(RegisterDTO),
     }
   }
 );
+
 router.post("/login", validateMiddlerwers(LoginDTO),async (req: Request, res: Response,next:NextFunction) => {
   try{
       const user: LoginDTO = req.body
