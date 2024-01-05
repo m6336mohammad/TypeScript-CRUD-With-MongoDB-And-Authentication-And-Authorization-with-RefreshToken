@@ -15,7 +15,7 @@ export const register = async (data: RegisterDTO) => {
       const hashpassword = await bcrypt.hash(data.password, 10);
       const newUser = await UserModel.create({ ...data, password: hashpassword });
       newUser.save();
-      return _.pick(newUser, "mobile","password");
+      return _.pick(newUser, "mobile");
     }
   };
   
