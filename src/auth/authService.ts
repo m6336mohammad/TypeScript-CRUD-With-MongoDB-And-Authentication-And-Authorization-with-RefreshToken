@@ -21,24 +21,24 @@ export const register = async (data: RegisterDTO) => {
   
 //login service
 export const login = async (data: LoginDTO) => {
-    //find user by mobile number
-   
-      const user = await UserModel.findOne({ email: data.email });
-      if (!user) {
-        throw new ServerError(404," not fond user");
-      }
-      const comparePassword = await bcrypt.compare(
-        data.password,
-        `${user.password}`
-      );
-      if (!comparePassword) {
-        throw new ServerError(401,"phone number or password invalid");
-      }
-      //encode user id in database and send to user
-      const token = encodeTokens({ id: user._id });
-      return { token: token };
-    
-  };
+  //find user by email number
+
+  const user = await UserModel.findOne({ email: data.email });
+  if (!user) {
+    throw new ServerError(404, "کاربر مورد نظر یافت نشد ");
+  }
+  const comparePassword = await bcrypt.compare(
+    data.password,
+    `${user.password}`
+  );
+  if (!comparePassword) {
+    throw new ServerError(401, "موبایل یا رمز عبور اشتباه می باشد");
+  }
+  //encode user id in database and send to user
+  const token = encodeTokens({ id: user._id });
+  return { token: token, email: user.email };
+};
+
   
   //forget password servize
 export const forgotPasswordRequest = async(data:ForgotPasswordDTO)=>{
