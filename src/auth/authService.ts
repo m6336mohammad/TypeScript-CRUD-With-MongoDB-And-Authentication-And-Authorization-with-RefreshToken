@@ -41,14 +41,12 @@ export const login = async (data: LoginDTO) => {
   };
   
   //forget password servize
-export const forgetPassword = async(data:ForgotPasswordDTO)=>{
-
+export const forgotPasswordRequest = async(data:ForgotPasswordDTO)=>{
   //find user by email number
     const user = await UserModel.findOne({ email: data.email });
     if (!user) {
       throw new ServerError(404,"کاربر مورد نظر یافت نشد ");
     }
-    return data.email
     
   }
   
