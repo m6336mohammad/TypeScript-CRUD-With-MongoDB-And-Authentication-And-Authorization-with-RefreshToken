@@ -5,6 +5,8 @@ import userController from "./users/userController";
 import authController from "./auth/authController";
 import erroHandellerMiddleware from "./middleware/ErrorHandelingMid";
 import CompController from "./components/compController";
+import logger from "./helper/logger";
+import refreshRouter from "./utils/refreshToken";
 import cors from 'cors'
 //variable
 const port = process.env.PORT || 3000;
@@ -16,8 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 //controller
-app.use('/Components',CompController)
+app.use("/refresh",refreshRouter)
 app.use('/users',userController)
+app.use('/Components',CompController)
 app.use('/auth',authController)
 
 //erroHandellerMiddleware
