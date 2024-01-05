@@ -28,7 +28,7 @@ router.post("/login",validateMiddlerwers(LoginDTO),async (req: Request, res: Res
   }
 );
 
-router.post("/forgotPassword",validateMiddlerwers(ForgotPasswordDTO),async (req: Request, res: Response,next:NextFunction )=>{
+router.post("/forgotPasswordReq",validateMiddlerwers(ForgotPasswordDTO),async (req: Request, res: Response,next:NextFunction )=>{
     try{
         const user = req.body
         await forgotPasswordRequest(user);
