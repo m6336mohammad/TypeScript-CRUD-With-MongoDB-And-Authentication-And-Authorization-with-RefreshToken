@@ -8,16 +8,16 @@ import ForgotPasswordDTO from "./auth_dto/forgotPasswordsDTO";
 
 //register service
 export const register = async (data: RegisterDTO) => {
-    const user = await UserModel.findOne({ mobile: data.email });
-    if (user) {
-        throw new ServerError(409,"The mobile number is duplicated");
-    } else {
-      const hashpassword = await bcrypt.hash(data.password, 10);
-      const newUser = await UserModel.create({ ...data, password: hashpassword });
-      newUser.save();
-      return _.pick(newUser, "mobile");
-    }
-  };
+  const user = await UserModel.findOne({ email: data.email });
+  if (user) {
+    throw new ServerError(409, " ایمیل تکراری می باشد");
+  } else {
+    const hashpassword = await bcrypt.hash(data.password, 10);
+    const newUser = await UserModel.create({ ...data, password: hashpassword });
+    newUser.save();
+    return _.pick(newUser, "email");
+  }
+};
   
 //login service
 export const login = async (data: LoginDTO) => {
