@@ -8,7 +8,9 @@ const validateMiddlerwers = (validaionSchema: any) => {
     // const errors = {};
     const clientErros = new ClientErros
     const validaionClass = plainToInstance(validaionSchema, body);
+
     validate(validaionClass, {}).then((error) => {
+      
       if (error.length > 0) {
         clientErros.data = []
         clientErros.errors = error.map((errors:any)=>{
