@@ -1,8 +1,7 @@
 import { Router, Request, Response, NextFunction } from "express";
 import {forgotPasswordRequest, login, register} from "./authService";
-import { LoginDTO,RegisterDTO } from "./auth_dto";
+import { LoginDTO,RegisterDTO,ForgotPasswordDTO} from "./auth_dto";
 import  validateMiddlerwers  from "../middleware/validationMiddlerwers";
-import ForgotPasswordDTO from "./auth_dto/forgotPasswordsDTO";
 
 const router = Router()
 
