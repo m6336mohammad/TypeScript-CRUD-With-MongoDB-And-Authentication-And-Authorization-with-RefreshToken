@@ -32,7 +32,7 @@ router.post("/forgotPasswordReq",validateMiddlerwers(ForgotPasswordDTO),async (r
     try{
         const user = req.body
         await forgotPasswordRequest(user);
-
+        
 
     }catch(err: any){
         next(err);
