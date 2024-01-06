@@ -5,6 +5,7 @@ import { encodeTokens , decodeAccessToken,decodeRefreshToken } from "../utils/in
 import _ from "lodash"
 import ServerError from "../errors/serverError";
 import ForgotPasswordDTO from "./auth_dto/forgotPasswordsDTO";
+import ResetCodeDTO from "./auth_dto/resetCodeDTO";
 
 //register service
 export const register = async (data: RegisterDTO) => {
@@ -40,7 +41,7 @@ export const login = async (data: LoginDTO) => {
 };
 
   
-  //forget password servize
+//forget password service
 export const forgotPasswordRequest = async(data:ForgotPasswordDTO)=>{
   //find user by email number
     const user = await UserModel.findOne({ email: data.email });
@@ -50,3 +51,19 @@ export const forgotPasswordRequest = async(data:ForgotPasswordDTO)=>{
     
   }
   
+//veryfiResetCode service
+export const veryfiResetCode = async (data: ResetCodeDTO) => {
+  //find user by resetCode number
+  const user = await UserModel.findOne({ resetCode: data.resetCode });
+  if (!user) {
+    throw new ServerError(404, "کد نامعتبر می باشد ");
+  }
+
+  // Check resetCode and resetTokenExpiration
+  if (user.resetCode && user.resetTokenExpiration) {
+  }
+const currentTime = Date.now();
+if (currentTime > user.resetTokenExpiration){
+  throw  new ServerError(404, "زمان شما به پایان رسیده است")    
+  }
+};
