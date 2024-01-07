@@ -66,4 +66,5 @@ const currentTime = Date.now();
 if (currentTime > user.resetTokenExpiration){
   throw  new ServerError(404, "زمان شما به پایان رسیده است")    
   }
+  return ({message:"Confirmed"})
 };
