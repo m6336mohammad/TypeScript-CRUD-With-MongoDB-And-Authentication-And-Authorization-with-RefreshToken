@@ -17,6 +17,13 @@ export const sendEmailService = async (to:string, message:string,sub:string) =>{
         subject: sub,
         text: message,
     };
-
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+            return info.response
+        }
+    });
 
 }
