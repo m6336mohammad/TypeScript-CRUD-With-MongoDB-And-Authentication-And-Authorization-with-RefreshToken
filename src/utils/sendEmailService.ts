@@ -11,6 +11,12 @@ export const sendEmailService = async (to:string, message:string,sub:string) =>{
             pass: '' //app passwors from google.com
         }
     });
+    const mailOptions = {
+        from: '', //gmail account
+        to: to,
+        subject: sub,
+        text: message,
+    };
 
 
-    }
+}
