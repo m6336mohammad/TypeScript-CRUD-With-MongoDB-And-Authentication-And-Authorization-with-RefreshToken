@@ -1,11 +1,10 @@
-import UserModel from "../model/userModel";
+import {ForgotPasswordDTO,ResetCodeDTO,ChangePasswordDTO} from "./auth_dto";
 import { LoginDTO, RegisterDTO } from "./auth_dto";
-import bcrypt from "bcrypt";
-import { encodeTokens , decodeAccessToken,decodeRefreshToken } from "../utils/index";
-import _ from "lodash"
+import { encodeTokens , } from "../utils/index";
 import ServerError from "../errors/serverError";
-import ForgotPasswordDTO from "./auth_dto/forgotPasswordsDTO";
-import ResetCodeDTO from "./auth_dto/resetCodeDTO";
+import UserModel from "../model/userModel";
+import bcrypt from "bcrypt";
+import _ from "lodash"
 
 //register service
 export const register = async (data: RegisterDTO) => {
@@ -66,5 +65,19 @@ const currentTime = Date.now();
 if (currentTime > user.resetTokenExpiration){
   throw  new ServerError(404, "زمان شما به پایان رسیده است")    
   }
-  return ({message:"Confirmed"})
+  return ({message:"کد تایید شد"})
 };
+
+//changePasswordService service
+export const changePasswordService = async (data: ChangePasswordDTO) => {
+  //find user by resetCode number
+  const user = await UserModel.findOne({ email: data.email });
+  if (!user) {
+    throw new ServerError(404, "کاربر مورد نظر یافت نشد");
+  }
+const hashedPassword = await bcrypt.hash(data.password, 10);
+ user.password = hashedPassword
+ await user.save()
+ return ({message:"رمز عبور با موفقیت به روز رسانی شد"})
+
+}
