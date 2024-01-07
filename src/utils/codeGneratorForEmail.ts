@@ -5,7 +5,7 @@ import ForgotPasswordDTO from '../auth/auth_dto/forgotPasswordsDTO';
 
 // Function to generate a unique token
 const generateCode = () => {
-    return crypto.randomBytes(3).toString('hex');// 6 ragam
+    return crypto.randomBytes(3).toString('hex');// 6 digits
 };
 
 // Function to set user reset token and its expiration
