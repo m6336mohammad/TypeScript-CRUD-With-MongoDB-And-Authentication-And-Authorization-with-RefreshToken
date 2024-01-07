@@ -27,3 +27,6 @@ export const sendEmailService = async (to:string, message:string,sub:string) =>{
     });
 
 }
+
+// Example usage:
+// sendEmail('support@example.com', 'Hello, this is a test email.');
