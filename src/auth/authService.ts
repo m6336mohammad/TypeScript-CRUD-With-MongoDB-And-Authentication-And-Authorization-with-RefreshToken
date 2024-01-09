@@ -48,9 +48,6 @@ export const forgotPasswordRequest = async(data:ForgotPasswordDTO)=>{
     if (!user) {
       throw new ServerError(404,"کاربر مورد نظر یافت نشد ");
     }
-    user.flage = flage;
-    await user.save();
-    return flage;
     
   }
   
