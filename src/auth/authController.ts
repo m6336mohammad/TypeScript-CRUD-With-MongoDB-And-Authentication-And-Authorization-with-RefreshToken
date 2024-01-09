@@ -31,7 +31,7 @@ router.post("/login",validateMiddlerwers(LoginDTO),async (req: Request, res: Res
 
 router.post("/forgotPasswordReq",validateMiddlerwers(ForgotPasswordDTO),async (req: Request, res: Response,next:NextFunction )=>{
     try{
-        const user = req.body
+        const user:ForgotPasswordDTO = req.body
         await forgotPasswordRequest(user);
         const resetCode = await codeGeneratorForEmail(user);
         await sendEmailService(user.email,resetCode,"کد تایید شما my-mqtt.ir")
