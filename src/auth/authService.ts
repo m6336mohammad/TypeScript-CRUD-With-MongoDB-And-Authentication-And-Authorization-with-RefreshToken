@@ -42,11 +42,15 @@ export const login = async (data: LoginDTO) => {
   
 //forget password service
 export const forgotPasswordRequest = async(data:ForgotPasswordDTO)=>{
+  const flage = true
   //find user by email number
     const user = await UserModel.findOne({ email: data.email });
     if (!user) {
       throw new ServerError(404,"کاربر مورد نظر یافت نشد ");
     }
+    user.flage = flage;
+    await user.save();
+    return flage;
     
   }
   
@@ -59,10 +63,12 @@ export const veryfiResetCode = async (data: ResetCodeDTO) => {
   }
 
   // Check resetCode and resetTokenExpiration
-  if (user.resetCode && user.resetTokenExpiration) {
+  if (user.flage == true && user.resetCode && user.resetTokenExpiration) {
   }
 const currentTime = Date.now();
 if (currentTime > user.resetTokenExpiration){
+  user.flage = false
+  user.save()
   throw  new ServerError(404, "زمان شما به پایان رسیده است")    
   }
   return ({message:"کد تایید شد"})
@@ -75,9 +81,15 @@ export const changePasswordService = async (data: ChangePasswordDTO) => {
   if (!user) {
     throw new ServerError(404, "کاربر مورد نظر یافت نشد");
   }
-const hashedPassword = await bcrypt.hash(data.password, 10);
- user.password = hashedPassword
- await user.save()
- return ({message:"رمز عبور با موفقیت به روز رسانی شد"})
+  if(user.flage == true && user.email){
+
+    const hashedPassword = await bcrypt.hash(data.password, 10);
+     user.password = hashedPassword 
+     user.flage = false
+     await user.save();
+     return ({message:"رمز عبور با موفقیت به روز رسانی شد"})
+  }
+
+ 
 
 }
