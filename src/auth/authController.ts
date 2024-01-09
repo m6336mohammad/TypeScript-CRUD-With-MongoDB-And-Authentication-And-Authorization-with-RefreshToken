@@ -2,7 +2,7 @@ import { Router, Request, Response, NextFunction } from "express";
 import {forgotPasswordRequest, login, register} from "./authService";
 import { LoginDTO,RegisterDTO,ForgotPasswordDTO} from "./auth_dto";
 import  validateMiddlerwers  from "../middleware/validationMiddlerwers";
-import {codeGeneratorForEmail} from "../utils/codeGneratorForEmail";
+import {codeGeneratorForEmail} from "../utils/codeGeneratorForEmail";
 import {sendEmailService} from "../utils/sendEmailService";
 
 const router = Router()
