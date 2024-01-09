@@ -87,6 +87,6 @@ export const changePasswordService = async (data: ChangePasswordDTO) => {
      return ({message:"رمز عبور با موفقیت به روز رسانی شد"})
   }
 
- 
+  return ({message:"ایمیل صحیح نمی باشد"})
 
 }
