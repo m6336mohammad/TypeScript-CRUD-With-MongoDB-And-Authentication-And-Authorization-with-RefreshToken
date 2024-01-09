@@ -8,6 +8,7 @@ email:String,
 age:Number,
 resetCode: String,
 resetTokenExpiration: Number,
+flage:Boolean,
 })
 
 export default mongoose.model('UserModel',userSchema)
