@@ -38,7 +38,7 @@ router.post("/forgotPasswordReq",validateMiddlerwers(ForgotPasswordDTO),async (r
         const resetCodeEmail = await codeGeneratorForEmail(user);
         await sendEmailService(user.email,resetCodeEmail,"کد تایید شما my-mqtt.ir")
         const resetCodeOTP = await codeGneratorForOTP(user);
-        // SendOPTService(user.mobile,resetCodeOTP)
+        // SendOPTService(user.mobile,resetCodeOTP) // When the user has mobile in DTO and UserModel
         res.status(200).send({message:"رمز به ایمیل و شماره همراه شما ارسال شد"})
 
     }catch(err: any){
