@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from "express";
-import {forgotPasswordRequest, login, register} from "./authService";
-import { LoginDTO,RegisterDTO,ForgotPasswordDTO} from "./auth_dto";
+import {forgotPasswordRequest, login, register, verifyResetCode} from "./authService";
+import {LoginDTO, RegisterDTO, ForgotPasswordDTO, ResetCodeDTO} from "./auth_dto";
 import  validateMiddlerwers  from "../middleware/validationMiddlerwers";
 import {codeGeneratorForEmail} from "../utils/codeGeneratorForEmail";
 import {sendEmailService} from "../utils/sendEmailService";
@@ -46,6 +46,18 @@ router.post("/forgotPasswordReq",validateMiddlerwers(ForgotPasswordDTO),async (r
     }
 
 });
+
+router.post("/verifyResetCode",validateMiddlerwers(ResetCodeDTO),async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const user: ResetCodeDTO = req.body;
+            const message = await verifyResetCode(user);
+            res.status(200).send(message);
+        } catch (err: any) {
+
+            next(err);
+        }
+    }
+);
 
 
 export default router;

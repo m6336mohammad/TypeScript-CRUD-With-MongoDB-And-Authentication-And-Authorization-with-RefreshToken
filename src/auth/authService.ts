@@ -54,7 +54,7 @@ export const forgotPasswordRequest = async(data:ForgotPasswordDTO)=>{
   }
   
 //verifyResetCode service
-export const veryfiResetCode = async (data: ResetCodeDTO) => {
+export const verifyResetCode = async (data: ResetCodeDTO) => {
   //find user by resetCode number
   const user = await UserModel.findOne({ resetCode: data.resetCode });
   if (!user) {
