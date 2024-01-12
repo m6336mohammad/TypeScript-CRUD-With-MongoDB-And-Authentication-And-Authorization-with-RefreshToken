@@ -4,6 +4,8 @@ import { LoginDTO,RegisterDTO,ForgotPasswordDTO} from "./auth_dto";
 import  validateMiddlerwers  from "../middleware/validationMiddlerwers";
 import {codeGeneratorForEmail} from "../utils/codeGeneratorForEmail";
 import {sendEmailService} from "../utils/sendEmailService";
+import { codeGneratorForOTP } from "../utils/codeGeneratorForOTP";
+import { SendOPTService } from "../utils/sendOTPService";
 
 const router = Router()
 
@@ -35,7 +37,8 @@ router.post("/forgotPasswordReq",validateMiddlerwers(ForgotPasswordDTO),async (r
         await forgotPasswordRequest(user);
         const resetCodeEmail = await codeGeneratorForEmail(user);
         await sendEmailService(user.email,resetCodeEmail,"کد تایید شما my-mqtt.ir")
-        // SendOPTService(user.mobile,resetCode)
+        const resetCodeOTP = await codeGneratorForOTP(user);
+        // SendOPTService(user.mobile,resetCodeOTP)
         res.status(200).send({message:"رمز به ایمیل شما ارسال شد"})
 
     }catch(err: any){
