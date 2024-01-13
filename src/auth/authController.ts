@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from "express";
-import {forgotPasswordRequest, login, register, verifyResetCode} from "./authService";
-import {LoginDTO, RegisterDTO, ForgotPasswordDTO, ResetCodeDTO} from "./auth_dto";
+import {changePasswordService, forgotPasswordRequest, login, register, verifyResetCode} from "./authService";
+import {LoginDTO, RegisterDTO, ForgotPasswordDTO, ResetCodeDTO, ChangePasswordDTO} from "./auth_dto";
 import  validateMiddlerwers  from "../middleware/validationMiddlerwers";
 import {codeGeneratorForEmail} from "../utils/codeGeneratorForEmail";
 import {sendEmailService} from "../utils/sendEmailService";
@@ -57,6 +57,27 @@ router.post("/verifyResetCode",validateMiddlerwers(ResetCodeDTO),async (req: Req
             next(err);
         }
     }
+);
+
+router.post("/changePasswordReq",validateMiddlerwers(ChangePasswordDTO),async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    
+    const user: ChangePasswordDTO = req.body;
+    const resetCode = await changePasswordService(user);
+    if(resetCode.message === "ایمیل صحیح نمی باشد"){
+      res.status(404).send(resetCode)
+      return
+    }
+    await sendEmailService(user.email,`کاربر گرامی ${user.email} رمز عبور با موفقیت به روز رسانی شد`,"هشدار امنیتی")
+    res.status(200).send(resetCode);
+    console.log(resetCode.message)
+
+
+  } catch (err: any) {
+    
+    next(err);
+  }
+}
 );
 
 
