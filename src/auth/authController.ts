@@ -6,6 +6,7 @@ import {codeGeneratorForEmail} from "../utils/codeGeneratorForEmail";
 import {sendEmailService} from "../utils/sendEmailService";
 import { codeGneratorForOTP } from "../utils/codeGeneratorForOTP";
 import { SendOPTService } from "../utils/sendOTPService";
+import {generateCaptchaQuestion} from "../utils/generateCaptchaQuestion";
 
 const router = Router()
 
@@ -78,6 +79,17 @@ router.post("/changePasswordReq",validateMiddlerwers(ChangePasswordDTO),async (r
     next(err);
   }
 }
+);
+router.get("/captchaReq",async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const { captcha, result } = generateCaptchaQuestion();
+            res.send({captcha:captcha,result:result})
+
+        } catch (err: any) {
+
+            next(err);
+        }
+    }
 );
 
 
