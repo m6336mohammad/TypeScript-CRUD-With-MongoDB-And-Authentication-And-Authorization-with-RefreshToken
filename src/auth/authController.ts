@@ -80,6 +80,7 @@ router.post("/changePasswordReq",validateMiddlerwers(ChangePasswordDTO),async (r
   }
 }
 );
+
 router.get("/captchaReq",async (req: Request, res: Response, next: NextFunction) => {
         try {
             const { captcha, result } = generateCaptchaQuestion();
