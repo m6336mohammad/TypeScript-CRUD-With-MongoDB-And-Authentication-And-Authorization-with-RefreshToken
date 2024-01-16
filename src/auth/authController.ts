@@ -7,6 +7,7 @@ import {sendEmailService} from "../utils/sendEmailService";
 import { codeGneratorForOTP } from "../utils/codeGeneratorForOTP";
 import { SendOPTService } from "../utils/sendOTPService";
 import {generateCaptchaQuestion} from "../utils/generateCaptchaQuestion";
+import { emailLoginLogger } from "../helper/emailLoginLogger";
 
 const router = Router()
 
@@ -40,6 +41,7 @@ router.post("/forgotPasswordReq",validateMiddlerwers(ForgotPasswordDTO),async (r
         await sendEmailService(user.email,resetCodeEmail,"کد تایید شما my-mqtt.ir")
         const resetCodeOTP = await codeGneratorForOTP(user);
         // SendOPTService(user.mobile,resetCodeOTP) // When the user has mobile in DTO and UserModel
+        emailLoginLogger.info(user)
         res.status(200).send({message:"رمز به ایمیل و شماره همراه شما ارسال شد"})
 
     }catch(err: any){
