@@ -14,22 +14,23 @@ export const getAllComponents = async (filtter:GetAllComponentDTO) => {
     if(title){
         query={title:title}
     }
-    const resalt = await ComponentModel.find(query,{},{skip:page_size*(page-1),limit:page_size})
-    return resalt;
+    const result = await ComponentModel.find(query,{},{skip:page_size*(page-1),limit:page_size})
+    return result;
 };
 
 export const getOneComponents = async (id: string) => {
-  const resalt = await ComponentModel.findById(id);
-  if(!resalt){
+  const result = await ComponentModel.findById(id);
+  if(!result){
     throw new ServerError(404,"Not fond device")
   }
-  return resalt
+  return result
 };
 
 export const createNewComponents = async (data:CreateProductsDTO) => {
     const result = await ComponentModel.create(data)
     return result
 };
+
 export const updateComponents = async (id: string, data:UpdateComponentDTO) => {
   const component = await ComponentModel.findOne({"_id":id, user:data.user})
   if(!component){
