@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const componentSchema = new mongoose.Schema({
+const componentsSchema = new mongoose.Schema({
   title: String,
   topic: String,
   subscriber: String,
@@ -15,5 +15,5 @@ const componentSchema = new mongoose.Schema({
   },
 });
 
-const ComponentModel = mongoose.model("ComponentModel", componentSchema);
-export default ComponentModel;
+const ComponentsModel = mongoose.model("ComponentsModel", componentsSchema);
+export default ComponentsModel;
