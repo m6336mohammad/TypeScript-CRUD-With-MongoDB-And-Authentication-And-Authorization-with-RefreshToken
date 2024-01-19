@@ -15,8 +15,8 @@ export const getAllComponents = async (filter:GetAllComponentDTO) => {
     if(title){
         query={title:title}
     }
-    const resalt = await ComponentModel.find(query,{},{skip:page_size*(page-1),limit:page_size})
-    return resalt;
+    const result = await ComponentModel.find(query,{},{skip:page_size*(page-1),limit:page_size})
+    return result;
 };
 
 export const getOneComponents = async (id: string) => {
