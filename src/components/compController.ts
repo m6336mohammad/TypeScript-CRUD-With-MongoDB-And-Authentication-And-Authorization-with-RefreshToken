@@ -5,7 +5,6 @@ import CreateComponentDTO from "./dto/componentCreateDTO";
 import {RequestWithUser} from "../types/requestWithUser";
 import UpdateComponentDTO from "./dto/componentsUpdateDTO";
 import { authMiddleware, validateMiddlerwers } from "./../middleware";
-import GetAllComponentDTO from "./dto/getAllComponentDTO";
 
 const router = Router();
 
