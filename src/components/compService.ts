@@ -19,7 +19,7 @@ export const getAllComponents = async (filter:GetAllComponentDTO) => {
     return result;
 };
 
-export const getOneComponents = async (id: string) => {
+export const getOneComponent = async (id: string) => {
   const result = await ComponentModel.findById(id);
   if(!result){
     throw new ServerError(404,"Not fond device")
