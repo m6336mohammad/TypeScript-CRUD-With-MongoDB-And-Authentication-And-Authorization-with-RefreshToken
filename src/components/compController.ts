@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from "express";
 
-import { createNewComponents, deleteComponents, getAllComponents, getOneComponents, updateComponents } from "./compService";
+import { createNewComponents, deleteComponents, getAllComponents, getOneComponent, updateComponents } from "./compService";
 import CreateComponentDTO from "./dto/componentCreateDTO";
 import {RequestWithUser} from "../types/requestWithUser";
 import UpdateComponentDTO from "./dto/componentsUpdateDTO";
@@ -22,7 +22,7 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
 router.get("/:id", async(req: Request, res: Response, next: NextFunction) => {
     try{
         const id : string = req.params.id
-        const result = await getOneComponents(id)
+        const result = await getOneComponent(id)
         res.status(200).json(result)
     }catch(err){
         next(err)
